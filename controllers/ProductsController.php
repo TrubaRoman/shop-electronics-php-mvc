@@ -15,11 +15,9 @@ class ProductsController
 {
     public function actionList()
     {
-        echo "ProductController actionList";
-        $string = '21-01-1983';
-        $replace = 'Year $3, Month $2, Day $1';
+        $string = '11-12-2018';
         $pattern = '/([0-9]{2})-([0-9]{2})-([0-9]{4})/';
-        echo '<br/>';
+        $replace = 'День: $1 Місяць: $2 Рік: $3';
         echo preg_replace($pattern, $replace, $string);
         return true;
     }

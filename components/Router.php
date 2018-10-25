@@ -38,20 +38,23 @@ class Router
                     //Провірити наявність такого запиту в routs
             foreach ($this->routes as $uriPattern => $Path){
                        //Якшо є, оприділити який контроллер і екшип буре управління
+                
                 if(preg_match("~$uriPattern~",$uri)){
-                    $segments = explode('/', $Path);
+                    $internalRoute = preg_replace("~$uriPattern~", $Path, $uri);
+                    $segments = explode('/', $internalRoute);
                     $controllerName = array_shift($segments).'Controller';
                     $controllerName = ucfirst($controllerName);
                     
                     $actionName = 'action'.ucfirst(array_shift($segments));
+                    
                     
                     $controllerFile = ROOT.'/controllers/'.$controllerName.'.php';
                     if(file_exists($controllerFile))
                     {
                         
                         require_once($controllerFile);
-                        $controlerObject = new $controllerName;
-                        $result = $controlerObject->$actionName();
+                        $controllerObject = new $controllerName;
+                        $result = call_user_func_array([$controllerObject,$actionName], $segments);
                         if($result !=null)
                         {
                             break;
@@ -59,6 +62,8 @@ class Router
                     }
                 }
             };
+            
+            
 
  
         //Підключити файл класу контроллера
