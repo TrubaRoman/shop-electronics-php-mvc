@@ -54,8 +54,8 @@ class Router
                         
                         require_once($controllerFile);
                         $controllerObject = new $controllerName;
-                        $result = call_user_func_array([$controllerObject,$actionName], $segments);
-                        if($result !=null)
+                        $result = call_user_func_array([$controllerObject,$actionName],$segments);
+                        if($result != null)
                         {
                             break;
                         }
