@@ -1,17 +1,21 @@
 <?php
-require_once ROOT.'/models/Category.php';
-require_once ROOT.'/models/Product.php';
-require_once ROOT.'/models/Specifications.php';
+
 //require_once ROOT.'/controllers/GlobalController.php';
 
 
 /**
- * Description of ProductController
+ * Description of ProductController 
+ * 
  *
  * @author r_truba
  */
 class ProductController 
 {
+    /**
+     * action views product item decription
+     * @param type $id
+     * @return boolean
+     */
     public function actionView($id)
     {
         $categoryList = Category::getCategoryList();

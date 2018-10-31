@@ -77,8 +77,8 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="./login/"> <i class="ion-android-person"></i> Login </a></li>
-              <li><a href="./signup/"> Sign Up</a></li>
+              <li><a href="/login/"> <i class="ion-android-person"></i> Login </a></li>
+              <li><a href="/signup/"> Sign Up</a></li>
               <li><a href="./cart/"> <i class="ion-bag"></i> Cart</a></li>
             </ul>
           </div><!--/.nav-collapse -->

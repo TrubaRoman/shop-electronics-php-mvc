@@ -1,17 +1,17 @@
 <?php
-require_once ROOT.'/models/Category.php';
 
-//require_once ROOT.'/controllers/GlobalController.php';
-//namespace \controllers;
 /**
  * Description of SiteController
- *
+ *Home page controller
  * @author r_truba
  */
 class SiteController 
 {
    
-    
+    /**
+     * View home-page
+     * @return boolean
+     */
    
     public function actionIndex()
     {
