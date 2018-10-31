@@ -191,7 +191,7 @@
               <?php foreach ($categoryProducts as $Item):?>
             <div class="col-sm-6 col-md-4 product">
               <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="../assets/img/products/chrome-book-11.jpg" alt="HP Chromebook 11"/></a>
+              <a href="./"><img src="/assets/img/products/chrome-book-11.jpg" alt="HP Chromebook 11"/></a>
 
               <div class="content">
                 <div style="min-height:70px;">
@@ -214,23 +214,7 @@
           </div>
 
           <nav>
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true"><i class="ion-ios-arrow-left"></i></span>
-                </a>
-              </li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li class="disabled"><a href="#">..</a></li>
-              <li><a href="#">10</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true"><i class="ion-ios-arrow-right"></i></span>
-                </a>
-              </li>
-            </ul>
+                <?php echo $pagination->get();?>
           </nav>
         </div>
         <!-- /// -->

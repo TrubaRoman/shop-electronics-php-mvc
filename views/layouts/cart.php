@@ -16,7 +16,7 @@
           <div class="media">
             <div class="media-left">
               <a href="#">
-                <img class="media-object" src="../assets/img/products/chrome-book-11.jpg" alt="HP Chromebook 11"/>
+                <img class="media-object" src="/assets/img/products/chrome-book-11.jpg" alt="HP Chromebook 11"/>
               </a>
             </div>
             <div class="media-body">
@@ -42,7 +42,7 @@
           <div class="media">
             <div class="media-left">
               <a href="#">
-                <img class="media-object" src="../assets/img/products/chrome-book-14.jpg" alt="HP Chromebook 11"/>
+                <img class="media-object" src="/assets/img/products/chrome-book-14.jpg" alt="HP Chromebook 11"/>
               </a>
             </div>
             <div class="media-body">
@@ -68,7 +68,7 @@
           <div class="media">
             <div class="media-left">
               <a href="#">
-                <img class="media-object" src="../assets/img/products/ipad-air.jpg" alt="iPad Air"/>
+                <img class="media-object" src="/assets/img/products/ipad-air.jpg" alt="iPad Air"/>
               </a>
             </div>
             <div class="media-body">
@@ -94,7 +94,7 @@
           <div class="media">
             <div class="media-left">
               <a href="#">
-                <img class="media-object" src="../assets/img/products/mi-pad-2.jpg" alt="HP Chromebook 11"/>
+                <img class="media-object" src="/assets/img/products/mi-pad-2.jpg" alt="HP Chromebook 11"/>
               </a>
             </div>
             <div class="media-body">
@@ -120,7 +120,7 @@
           <div class="media">
             <div class="media-left">
               <a href="#">
-                <img class="media-object" src="../assets/img/products/lenovo-yoga.jpg" alt="Lenovo Yoga"/>
+                <img class="media-object" src="/assets/img/products/lenovo-yoga.jpg" alt="Lenovo Yoga"/>
               </a>
             </div>
             <div class="media-body">
@@ -146,7 +146,7 @@
           <div class="media">
             <div class="media-left">
               <a href="#">
-                <img class="media-object" src="../assets/img/products/surface-pro.jpg" alt="HP Chromebook 11"/>
+                <img class="media-object" src="/assets/img/products/surface-pro.jpg" alt="HP Chromebook 11"/>
               </a>
             </div>
             <div class="media-body">
@@ -172,7 +172,7 @@
           <div class="media">
             <div class="media-left">
               <a href="#">
-                <img class="media-object" src="../assets/img/products/asus-transformer.jpg" alt="HP Chromebook 11"/>
+                <img class="media-object" src="/assets/img/products/asus-transformer.jpg" alt="HP Chromebook 11"/>
               </a>
             </div>
             <div class="media-body">

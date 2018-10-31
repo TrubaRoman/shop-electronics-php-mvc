@@ -110,10 +110,10 @@
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#English"> <img src="../assets/img/flags/gb.png" alt="Eng"/> English</a></li>
-                <li><a href="#Spanish"> <img src="../assets/img/flags/es.png" alt="Spa"/> Spanish</a></li>
-                <li><a href="#Deutch"> <img src="../assets/img/flags/de.png" alt="De"/> Deutch</a></li>
-                <li><a href="#French"> <img src="../assets/img/flags/fr.png" alt="Fr"/> French</a></li>
+                <li><a href="#English"> <img src="/assets/img/flags/gb.png" alt="Eng"/> English</a></li>
+                <li><a href="#Spanish"> <img src="/assets/img/flags/es.png" alt="Spa"/> Spanish</a></li>
+                <li><a href="#Deutch"> <img src="/assets/img/flags/de.png" alt="De"/> Deutch</a></li>
+                <li><a href="#French"> <img src="/assets/img/flags/fr.png" alt="Fr"/> French</a></li>
               </ul>
             </div>
             <hr class="offset-xs">
@@ -158,11 +158,11 @@
             <p>Pay your order in the most convenient way</p>
 
             <div class="payment-icons">
-              <img src="../assets/img/payments/paypal.svg" alt="paypal">
-              <img src="../assets/img/payments/visa.svg" alt="visa">
-              <img src="../assets/img/payments/master-card.svg" alt="mc">
-              <img src="../assets/img/payments/discover.svg" alt="discover">
-              <img src="../assets/img/payments/american-express.svg" alt="ae">
+              <img src="/assets/img/payments/paypal.svg" alt="paypal">
+              <img src="/assets/img/payments/visa.svg" alt="visa">
+              <img src="/assets/img/payments/master-card.svg" alt="mc">
+              <img src="/assets/img/payments/discover.svg" alt="discover">
+              <img src="/assets/img/payments/american-express.svg" alt="ae">
             </div>
             <br>
 
@@ -230,13 +230,13 @@
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="../assets/js/jquery-latest.min.js"></script>
+    <script src="/assets/js/jquery-latest.min.js"></script>
     
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/core.js"></script>
-    <script src="../assets/js/carousel.js"></script>
-    <script src="../assets/js/carousel-recommendation.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/core.js"></script>
+    <script src="/assets/js/carousel.js"></script>
+    <script src="/assets/js/carousel-recommendation.js"></script>
     
   </body>
 </html>

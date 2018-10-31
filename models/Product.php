@@ -7,7 +7,7 @@
  */
 class Product 
 {
-     const SHOW_BY_DEFAULT = 4;
+     const SHOW_BY_DEFAULT = 2;
      const SHOW_RECOMMENDED_DEFAULT = 4;
      
      /**
@@ -15,10 +15,10 @@ class Product
       * @param type $count
       * @return array
       */
-     public static function getLatesProducts($count = self::SHOW_BY_DEFAULT)
+     public static function getLatesProducts($count = self::SHOW_BY_DEFAULT,$page = 1)
      {
          $count = intval($count);
-
+         $offset = self::getOffset($page);
          $db = Db::getConnection();
     //      var_dump($db);
          
@@ -26,7 +26,8 @@ class Product
          $result = $db->query('SELECT id,name,price,image,is_new,brand ,discount FROM product '
                  . 'WHERE status = "1" '
                  . 'ORDER BY id DESC '
-                 . 'LIMIT '.$count);
+                 . 'LIMIT '.$count
+                 .' OFFSET '.$offset);
          
          
          $i = 0;
@@ -50,16 +51,19 @@ class Product
  * @param type $categoryId
  * @return array products by category
  */
-     public static function getProductsListByCategory($categoryId = false)
+     public static function getProductsListByCategory($categoryId = false,$page = 1)
      {  
          if($categoryId)
-         {  $categoryId = intval($categoryId);
+         {  $page = intval($page);
+            $offset = self::getOffset($page);
+             $categoryId = intval($categoryId);
              $db = Db::getConnection();
              $products = [];
              $result = $db->query("SELECT id,name,price,image,brand,discount FROM "
                      . "product WHERE status = '1' AND category_id = '$categoryId' "
                      . "ORDER BY id DESC "
-                     . "LIMIT ".self::SHOW_BY_DEFAULT);
+                     . "LIMIT ".self::SHOW_BY_DEFAULT
+                     . " OFFSET ".$offset);
              
              $i = 0;
              while ($row = $result->fetch())
@@ -116,5 +120,28 @@ class Product
              $i++;
          }
          return $recommendedList;
+     }
+     
+     public static function getOffset($page = 1)
+     {
+         $page = intval($page);
+         return ($page-1)* self::SHOW_BY_DEFAULT;
+     }
+     
+     public static function getTotalProductsInCategory($categoryId = false)
+     {
+         $db = Db::getConnection();
+         $sqlId = "";
+         if(is_numeric($categoryId)){
+             $categoryId = intval($categoryId);
+             $sqlId = " AND category_id =".$categoryId;
+         }
+         
+         $result = $db->query("SELECT count(id) AS count FROM product "
+                 . "WHERE status = '1'".$sqlId);
+             
+         $result->setFetchMode(PDO::FETCH_ASSOC);
+         $row = $result->fetch();
+         return $row['count'];
      }
 }

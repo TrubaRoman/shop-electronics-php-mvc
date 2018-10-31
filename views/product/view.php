@@ -10,24 +10,24 @@
 
               <div class="items">
                 <div class="item active" data-marker="1">
-                  <img src="../assets/img/product/1.jpg" alt="ChromeBook 11"/>
+                  <img src="/assets/img/product/1.jpg" alt="ChromeBook 11"/>
                 </div>
                 <div class="item" data-marker="2">
-                  <img src="../assets/img/product/2.jpg" alt="ChromeBook 11"/>
+                  <img src="/assets/img/product/2.jpg" alt="ChromeBook 11"/>
                 </div>
                 <div class="item" data-marker="3">
-                  <img src="../assets/img/product/3.jpg" alt="ChromeBook 11"/>
+                  <img src="/assets/img/product/3.jpg" alt="ChromeBook 11"/>
                 </div>
                 <div class="item" data-marker="4">
-                  <img src="../assets/img/product/4.jpg" alt="ChromeBook 11"/>
+                  <img src="/assets/img/product/4.jpg" alt="ChromeBook 11"/>
                 </div>
                 <div class="item" data-marker="5">
-                  <img src="../assets/img/product/5.jpg" alt="ChromeBook 11"/>
+                  <img src="/assets/img/product/5.jpg" alt="ChromeBook 11"/>
                 </div>
                 <div class="item" data-marker="6">
                   <div class="tiles">
                     <a href="#video" data-gallery="#video" data-source="youtube" data-id="hED0N4CFoqs" data-title="An upscale new Chromebook from HP" data-description="The new HP Chromebook 13 runs a Core M CPU inside a slim aluminum body.">
-                      <img src="../assets/img/product/video.jpg" alt="ChromeBook 11">
+                      <img src="/assets/img/product/video.jpg" alt="ChromeBook 11">
 
                       <div class="overlay"></div>
                       <div class="content">
@@ -44,17 +44,17 @@
               </div>
 
               <ul class="markers">
-                <li data-marker="1" class="active"><img src="../assets/img/product/1.jpg" alt="Background"/></li>
-                <li data-marker="2"><img src="../assets/img/product/2.jpg" alt="Background"/></li>
-                <li data-marker="3"><img src="../assets/img/product/3.jpg" alt="Background"/></li>
-                <li data-marker="4"><img src="../assets/img/product/4.jpg" alt="Background"/></li>
-                <li data-marker="5"><img src="../assets/img/product/5.jpg" alt="Background"/></li>
-                <li data-marker="6"><img src="../assets/img/product/video.jpg" alt="Background"/></li>
+                <li data-marker="1" class="active"><img src="/assets/img/product/1.jpg" alt="Background"/></li>
+                <li data-marker="2"><img src="/assets/img/product/2.jpg" alt="Background"/></li>
+                <li data-marker="3"><img src="/assets/img/product/3.jpg" alt="Background"/></li>
+                <li data-marker="4"><img src="/assets/img/product/4.jpg" alt="Background"/></li>
+                <li data-marker="5"><img src="/assets/img/product/5.jpg" alt="Background"/></li>
+                <li data-marker="6"><img src="/assets/img/product/video.jpg" alt="Background"/></li>
               </ul>
             </div>
           </div>
           <div class="col-sm-5 col-md-5">
-            <img src="../assets/img/brands/hp.png" alt="HP" class="brand hidden-xs" />
+            <img src="/assets/img/brands/hp.png" alt="HP" class="brand hidden-xs" />
             <h1><?= $prodctItem['name'];?></h1>
 
             <p> <small>діагональ:</small> <?= $specificationsProduct['diagonal']; ?></p>
@@ -127,7 +127,7 @@
 
               <div class="row specification">
                 <div class="col-sm-6"> <label>Додатково</label> </div>
-                <div class="col-sm-6"> <p><?=$specificationsProduct['additionally']; ?></p> </div>
+                <div class="col-sm-6"> <p><?=$specificationsProduct['/assets']; ?></p> </div>
               </div>
 
           </div>
@@ -186,7 +186,7 @@
                  <?php foreach ($recommendedProduct as $recommendedItem):?>
               <div class="col-sm-6 col-md-3 product">
                 <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-                <a href="./"><img src="../assets/img/products/ipad-air.jpg" alt="iPad Air"/></a>
+                <a href="./"><img src="/assets/img/products/ipad-air.jpg" alt="iPad Air"/></a>
 
                 <div class="content">
                     <div style="min-height:100px;">
