@@ -51,22 +51,22 @@
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Бренди</li>
                   <li role="separator" class="divider"></li>
-                  <?php foreach ($categoryList as $categorItem):?>
+                  <?php foreach (Category::getCategoryList() as $categorItem):?>
                   <li><a href="/category/<?=$categorItem['id'];?>"><?=$categorItem['name']; ?></a></li>
                   <?php endforeach;?>
          </ul>
               </li>
               <li><a href="/catalog/">Catalog</a></li>
-              <li><a href="./blog/">Blog</a></li>
-              <li><a href="./gallery/">Gallery</a></li>
+              <li><a href="/blog/">Blog</a></li>
+              <li><a href="/gallery/">Gallery</a></li>
               <li class="dropdown">
-                <a href="./catalog/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
+                <a href="/catalog/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="./catalog/product.html">Product</a></li>
                   <li><a href="./cart/">Cart</a></li>
                   <li><a href="./checkout/">Checkout</a></li>
                   <li><a href="./faq/">FAQ</a></li>
-                  <li><a href="./contacts/">Contacts</a></li>
+                  <li><a href="/contacts/">Contacts</a></li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Variations</li>
                   <li><a href="./home">Home</a></li>
@@ -77,8 +77,15 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/login/"> <i class="ion-android-person"></i> Login </a></li>
-              <li><a href="/signup/"> Sign Up</a></li>
+                <?php if (User::isGuest()):?>
+              <li><a href="/login/"> <i class="ion-log-in"></i> Вхід </a></li>
+              <li><a href="/signup/"><i class="ion-android-person-add "></i> Реєстрація</a></li>
+                  
+                  <?php else :?>
+              
+                            <li><a href="/logout/"> <i class="ion-log-out"></i> Вихід  </a></li>
+                            <li><a href="/cabinet/edit"> <i class="ion-android-options"></i> Редагувати дані  </a></li>
+                <?php endif;?>        
               <li><a href="./cart/"> <i class="ion-bag"></i> Cart</a></li>
             </ul>
           </div><!--/.nav-collapse -->

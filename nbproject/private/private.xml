@@ -3,19 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/ishop/shop/components/Pagination.php</file>
-            <file>file:/C:/ishop/shop/views/catalog/category.php</file>
+            <file>file:/C:/ishop/shop/models/User.php</file>
+            <file>file:/C:/ishop/shop/components/Db.php</file>
+            <file>file:/C:/ishop/shop/views/user/login.php</file>
+            <file>file:/C:/ishop/shop/models/Validate.php</file>
+            <file>file:/C:/ishop/shop/views/user/register.php</file>
+            <file>file:/C:/ishop/shop/views/cabinet/index.php</file>
+            <file>file:/C:/ishop/shop/controllers/UserController.php</file>
+            <file>file:/C:/ishop/shop/controllers/CabinetController.php</file>
             <file>file:/C:/ishop/shop/views/layouts/header.php</file>
-            <file>file:/C:/ishop/shop/controllers/SiteController.php</file>
-            <file>file:/C:/ishop/shop/models/Product.php</file>
-            <file>file:/C:/ishop/shop/views/product/view.php</file>
-            <file>file:/C:/ishop/shop/controllers/CatalogController.php</file>
-            <file>file:/C:/ishop/shop/views/catalog/index.php</file>
-            <file>file:/C:/ishop/shop/models/Category.php</file>
             <file>file:/C:/ishop/shop/config/routes.php</file>
-            <file>file:/C:/ishop/shop/controllers/ProductController.php</file>
-            <file>file:/C:/ishop/shop/views/site/index.php</file>
-            <file>file:/C:/ishop/shop/models/Specifications.php</file>
+            <file>file:/C:/ishop/shop/components/Breadcrumbs.php</file>
+            <file>file:/C:/ishop/shop/views/cabinet/edit.php</file>
         </group>
     </open-files>
 </project-private>

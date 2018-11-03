@@ -15,7 +15,7 @@ class UserController
      */
     public function actionRegister()
     {
-        $categoryList = Category::getCategoryList();
+        //$categoryList = Category::getCategoryList();
         
         $login = '';
         $email = '';
@@ -48,6 +48,7 @@ class UserController
         require_once(ROOT.'/views/user/register.php');
         return true;
     }
+ 
     
     /**
      * 
@@ -56,9 +57,35 @@ class UserController
      */
     public function actionLogin()
     {
-        $categoryList = Category::getCategoryList();
+        //$categoryList = Category::getCategoryList();
+        
+        $email = '';
+        $password = '';
+        $errors = false;
+        if(!empty($_POST)){
+            $email  = $_POST['email'];
+            $password  = $_POST['password'];
+            
+            if(!Validate::checkEmail($email)) $errors[] = "Поле Email введино некорректно!";
+            if(!Validate::checkPassword($password)) $errors[] = 'Поле пароль повинно містити не менше 6 не більше 40 знаків';
+            if(!User::checkEmailExists($email)) $errors[] = 'Дений email не знайдено!';
+            if(!User::checkUserData($email, $password)) $errors[] = 'Невірний пароль!';
+        else {  
+                $user_id = User::checkUserData($email, $password);
+                
+                User::auth($user_id);
+                header("Location:/cabinet/");
+             }
+        }
         require_once(ROOT.'/views/user/login.php');
         return true;
         
+    }
+    
+    public function actionLogout()
+    {
+        
+        unset($_SESSION['user']);
+        header("Location: /");
     }
 }

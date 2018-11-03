@@ -68,9 +68,29 @@ class Validate
      */
     public static function checkPhone($phone)
     {
-        if (!preg_match("/[0][0-9]{7}/i", $phone)) return false;
+        if (!preg_match("/[+380][0-9]{7}/i", $phone)) return false;
 
        return true;
+    }
+    
+    public static function filterData($params)
+    {
+        if(is_array($params))
+        {
+            for($i = 0;$i < count($params);$i++){
+                $params[$i] = htmlspecialchars($params[$i]);
+                $params[$i] = addslashes($params[$i]);
+
+            }
+            return $params;
+        }  
+        
+        if(is_string($params) || is_integer($params)){
+                $params = htmlspecialchars($params);
+                $params = addslashes($params);
+                return $params;
+        }
+            
     }
 
 }

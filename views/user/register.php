@@ -40,7 +40,7 @@
                     <input type="text" name="name" value="<?=$login; ?>" placeholder="Ім'я" required="" class="form-control" /><br>
                 </div>
                 <div class="col-sm-12">
-                  <input type="text" name="phone" value="<?=$phone; ?>" placeholder="Телефон в форматі (097)000 00 00" required="" class="form-control"   /><br>
+                  <input type="text" name="phone" value="<?=$phone; ?>" placeholder="Телефон в форматі +38097 000 00 00" required="" class="form-control"   /><br>
                 </div>
                 <div class="col-sm-12">
                     <input type="email" name="email" value="<?=$email; ?>" placeholder="E-mail" required="" class="form-control"  /><br>

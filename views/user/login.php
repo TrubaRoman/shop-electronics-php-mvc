@@ -8,11 +8,36 @@
         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 md-padding">
           <h1 class="align-center">Війти в кабінет</h1>
           <br>
+           <?php
+          if (isset($errors) && is_array($errors)):
+              ?>
+              <div class="alert alert-danger">
+                  <?php foreach ($errors as $error): ?>
+                      <ul>
+                          <li><small><?php echo $error; ?></small></li>
+                      </ul>
 
-          <form class="signin" action="index.php" method="post">
-            <input type="email" name="email" value="" placeholder="E-mail" required="" class="form-control" />
+                  <?php endforeach; ?>
+              </div>
+          <?php endif; ?>
+          
+          <?php
+          if (isset($success) && is_array($success)):
+              ?>
+              <div class="alert alert-success">
+                  <?php foreach ($success as $success_message): ?>
+                      <ul>
+                          <li><small><?php echo $success_message; ?></small></li>
+                      </ul>
+
+                  <?php endforeach; ?>
+              </div>
+          <?php endif; ?>
+
+          <form class="signin"  method="post">
+              <input type="email" name="email" value="<?=$email; ?>" placeholder="E-mail" required="" class="form-control" />
             <br>
-            <input type="password" name="password" value="" placeholder="Password" required="" class="form-control" />
+            <input type="password" name="password" value="<?=$password; ?>" placeholder="Пароль" required="" class="form-control" />
             <br>
 
             <button type="submit" class="btn btn-primary">Вхід</button>

@@ -15,8 +15,10 @@ class Specifications
             $id_product = intval($id_product);
             
             $db = Db::getConnection();
-            
-            $result  =  $db->query('SELECT * FROM specifications WHERE product_id = '.$id_product);
+            $sql = "SELECT * FROM specifications WHERE product_id = :id_product";
+            $result  =  $db->prepare($sql);
+            $result->bindParam(':id_product',$id_product, PDO::PARAM_INT);
+            $result->execute();
             $result->setFetchMode(PDO::FETCH_ASSOC);
             
             return $result->fetch();

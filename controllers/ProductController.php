@@ -18,7 +18,7 @@ class ProductController
      */
     public function actionView($id)
     {
-        $categoryList = Category::getCategoryList();
+        //$categoryList = Category::getCategoryList();
         $prodctItem = Product::getProductById($id);
         $specificationsProduct = Specifications::getSpetificByIdProduct($id);
         $recommendedProduct = Product::getRecomendedProducts(4);
