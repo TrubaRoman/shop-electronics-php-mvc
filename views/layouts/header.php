@@ -64,7 +64,7 @@
                 <a href="/catalog/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="./catalog/product.html">Product</a></li>
-                  <li><a href="./cart/">Cart</a></li>
+                  <li><a href="/cart/">Cart</a></li>
                   <li><a href="./checkout/">Checkout</a></li>
                   <li><a href="./faq/">FAQ</a></li>
                   <li><a href="/contacts/">Contacts</a></li>
@@ -87,7 +87,8 @@
                             <li><a href="/logout/"> <i class="ion-log-out"></i> Вихід  </a></li>
                             <li><a href="/cabinet/edit"> <i class="ion-android-options"></i> Редагувати дані  </a></li>
                 <?php endif;?>        
-              <li><a href="./cart/"> <i class="ion-bag"></i> Cart</a></li>
+                            <li><a href="/cart/"> <i class="ion-bag"></i>
+                                    <span id="cart-count"> <?php echo(Cart::countItem() != 0)? '('.Cart::countItem().')': 'Кошик';?></span></a>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

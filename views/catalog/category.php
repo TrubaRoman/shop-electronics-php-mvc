@@ -199,14 +199,16 @@
                 </div>
                 <p class="price"><?=$Item['price'];?><small> грн</small></p>
 
-                <p class="price through"> <?=($Item['discount'] != 0)? $Item['discount'].'<small>грн</small>':''; ?></p>
-                <label><?=$Item['brand']; ?></label>
+                    <p class="price through"> <?= ($Item['discount'] != 0) ? $Item['discount'] . '<small>грн</small>' : ''; ?></p>
+                    <label><?= $Item['brand']; ?></label>
 
-                <a href="/product/<?=$Item['id'] ;?>" class="btn btn-link"> Детально</a>
-                <button class="btn btn-primary btn-rounded btn-sm"> <i class="ion-bag"></i> Add to cart</button>
-              </div>
-            </div>
-              <?php endforeach;?>
+                    <a href="/product/<?= $Item['id']; ?>" class="btn btn-link"> Детально</a>
+                    <a href="/cart/add/<?= $Item['id']; ?>" style="all:none;">
+                        <button class="btn btn-primary btn-rounded btn-sm" > 
+                            <i class="ion-bag"></i> В кошик</button></a>
+                  </div>
+                </div>
+            <?php endforeach; ?>
 
 
 
