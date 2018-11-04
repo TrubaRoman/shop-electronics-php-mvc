@@ -6,18 +6,18 @@
           <div class="col-sm-4">
             <div id="Address">
               <address>
-                <label class="h3">Unistore, Inc.</label><br>
-                1305 Market Street, Suite 800<br>
-                San Francisco, CA 94102<br>
-                <abbr title="Phone">P:</abbr> (123) 456-7890
+                <label class="h3">Наша адреса</label><br>
+                1305 UjobenStreet, Suite 800<br>
+                San Francisco, CA hz<br>
+                <abbr title="Phone">P:</abbr> 0(000)000 00 00
               </address>
 
               <address>
-                <strong>Support</strong><br>
+                <strong>Підтримка</strong><br>
                 <a href="mailto:#">sup@example.com</a>
                 <br><br>
 
-                <strong>Partners</strong><br>
+                <strong>секс-партнери</strong><br>
                 <a href="mailto:#">col@example.com</a>
               </address>
             </div>
@@ -32,19 +32,45 @@
 
     <div class="gray">
       <div class="container align-center">
-        <h1> Need our help? </h1>
-        <p> Please select a question above first so we can connect you <br class="visible-md visible-lg"> to the right agent. </p>
+        <h1> Відправити повідомлення </h1>
+        <p> Заповніть форму, і ми з вами звяжемось <br class="visible-md visible-lg"> Протягом короткого часу. </p>
 
         <div class="row">
           <div class="col-sm-4 col-sm-offset-4">
-            <form class="contact" action="index.php" method="post">
-              <textarea class="form-control" name="message" placeholder="Message" required="" rows="5"></textarea>
+                         <?php
+          if (isset($errors) && is_array($errors)):
+              ?>
+              <div class="alert alert-danger">
+                  <?php foreach ($errors as $error): ?>
+                      <ul>
+                          <li><small><?php echo $error; ?></small></li>
+                      </ul>
+
+                  <?php endforeach; ?>
+              </div>
+          <?php endif; ?>
+          
+          <?php
+          if (isset($success) && is_array($success)):
+              ?>
+              <div class="alert alert-success">
+                  <?php foreach ($success as $success_message): ?>
+                      <ul>
+                          <li><small><?php echo $success_message; ?></small></li>
+                      </ul>
+
+                  <?php endforeach; ?>
+              </div>
+          <?php endif; ?>
+
+            <form class="contact" action="" method="post">
+              <textarea class="form-control" name="message" placeholder="Повідомлення" required="" rows="5"  ></textarea>
               <br>
 
-              <input type="email" name="email" value="" placeholder="E-mail" required="" class="form-control" />
+              <input type="email" name="email" value="<?=$email; ?>" placeholder="E-mail" required="" class="form-control" />
               <br>
 
-              <button type="submit" class="btn btn-primary justify"> Send question <i class="ion-android-send"></i> </button>
+              <button type="submit" class="btn btn-primary justify"> Відправити <i class="ion-android-send"></i> </button>
             </form>
           </div>
         </div>

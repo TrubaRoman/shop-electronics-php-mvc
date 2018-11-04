@@ -34,6 +34,13 @@ class Validate
     {
         return(filter_var($email, FILTER_VALIDATE_EMAIL)) ? true : true;
     }
+    
+    public static function checkMessage($message)
+    {
+        
+        $length = strlen($message);
+        return ($length > 2)? true : false;
+    }
 
     /**
      * 

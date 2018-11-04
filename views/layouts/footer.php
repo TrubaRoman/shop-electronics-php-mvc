@@ -237,13 +237,8 @@
     <script src="/assets/js/core.js"></script>
     <script src="/assets/js/carousel.js"></script>
     <script src="/assets/js/carousel-recommendation.js"></script>
-    <?php 
-    echo '<pre>';
-    print_r($_SERVER);
-    echo '</pre>';
-    
-    if($_SERVER['REQUEST_URI'] == '/contacts/') 
-           require_once ROOT.'/views/layouts/map_init.php';?>
+
+
     
   </body>
 </html>
