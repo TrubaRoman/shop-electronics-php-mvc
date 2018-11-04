@@ -197,7 +197,7 @@
                     <p class="price through"> <?=($catalogItem['discount'] != 0)? $catalogItem['discount'].'<small>грн</small>':''; ?></p>
                 <label><?=$catalogItem['brand']; ?></label>
                 <a href="/product/<?=$catalogItem['id'] ;?>" class="btn btn-link"> Детально</a>
-                <a href="/cart/add/<?=$catalogItem['id'];?>" style="all:none;"><button class="btn btn-primary btn-rounded btn-sm" > <i class="ion-bag"></i> В кошик</button></a>
+                <button class="btn btn-primary btn-rounded btn-sm" data-id ="<?=$catalogItem['id']; ?>" > <i class="ion-bag"></i> В кошик</button>
               </div>
             </div>
               <?php endforeach;?>

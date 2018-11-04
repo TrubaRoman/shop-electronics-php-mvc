@@ -203,8 +203,8 @@
                     <label><?= $Item['brand']; ?></label>
 
                     <a href="/product/<?= $Item['id']; ?>" class="btn btn-link"> Детально</a>
-                    <a href="/cart/add/<?= $Item['id']; ?>" style="all:none;">
-                        <button class="btn btn-primary btn-rounded btn-sm" > 
+
+                    <button class="btn btn-primary btn-rounded btn-sm" data-id ="<?=$Item['id']; ?>" > 
                             <i class="ion-bag"></i> В кошик</button></a>
                   </div>
                 </div>

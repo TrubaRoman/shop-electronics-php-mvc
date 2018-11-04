@@ -66,7 +66,8 @@
             <p class="price through"> <?=($prodctItem['discount'] != 0)? $prodctItem['discount'].'<small>грн</small>':''; ?></p>
             <br><br>
 
-            <button class="btn btn-primary btn-rounded"> <i class="ion-bag"></i> Add to cart</button>
+            <button class="btn btn-primary btn-rounded" data-id="<?php echo $prodctItem['id'];?>"> <i class="ion-bag"></i> В кошик</button>
+                    </a>
           </div>
         </div>
     		<br><br><br>

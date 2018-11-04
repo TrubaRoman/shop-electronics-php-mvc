@@ -88,7 +88,7 @@
                             <li><a href="/cabinet/edit"> <i class="ion-android-options"></i> Редагувати дані  </a></li>
                 <?php endif;?>        
                             <li><a href="/cart/"> <i class="ion-bag"></i>
-                                    <span id="cart-count"> <?php echo(Cart::countItem() != 0)? '('.Cart::countItem().')': 'Кошик';?></span></a>
+                                    <span id="cart-count"> <?php echo 'Кошик '.Cart::countItem();?></span></a>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

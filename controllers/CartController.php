@@ -20,4 +20,11 @@ class CartController
         $referrer = $_SERVER['HTTP_REFERER'];
         header("Location:$referrer");
     }
+    
+    public function actionAddAjax($id)
+    {
+       echo Cart::addProduct($id);
+        return TRUE;
+    }
+    
 }

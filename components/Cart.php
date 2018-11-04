@@ -39,7 +39,8 @@ class Cart
         }
         // записуємо в сесію
         $_SESSION['products'] = $productsInCart;
-       
+        // повертаємо кількість елементів в кошику
+       return self::countItem();
 
     }
     

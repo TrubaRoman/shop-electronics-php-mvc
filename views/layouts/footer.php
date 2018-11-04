@@ -237,7 +237,17 @@
     <script src="/assets/js/core.js"></script>
     <script src="/assets/js/carousel.js"></script>
     <script src="/assets/js/carousel-recommendation.js"></script>
-
+    <script>
+        $(document).ready(function(){
+            $(".btn-rounded").click(function(){
+                var id = $(this).attr("data-id");
+                $.post("/cart/addAjax/"+id,{},function(data){
+                    $("#cart-count").html(data);
+                });
+                return false;
+            });
+        });
+    </script>
 
     
   </body>
