@@ -1,4 +1,4 @@
-<?php require_once ROOT.'/views/layouts/cart.php';?>
+
 <?php require_once ROOT.'/views/layouts/header.php';?>
     <hr class="offset-lg">
 

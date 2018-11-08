@@ -30,6 +30,7 @@
   </head>
   <body>
       <p class="h5" style="color:red;"> This site is a test and does not contain true information after a certain period it will be deleted</p>
+      <?php require_once ROOT.'/views/layouts/cart.php';?>
     <nav class="navbar navbar-default">
         <div class="container">
           <div class="navbar-header">
