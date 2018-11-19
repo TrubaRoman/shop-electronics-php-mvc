@@ -16,6 +16,7 @@ function my_autoload($class_name)
     $array_patch = [
         '/components/',
         '/models/',
+        '/controllers/'
         ];
     
     foreach ($array_patch as $patch){

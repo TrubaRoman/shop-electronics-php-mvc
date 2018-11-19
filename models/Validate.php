@@ -39,7 +39,7 @@ class Validate
     {
         
         $length = strlen($message);
-        return ($length > 2)? true : false;
+        return ($length > 2 || $length < 500)? true : false;
     }
 
     /**
@@ -79,12 +79,31 @@ class Validate
 
        return true;
     }
-    
-    public static function filterData($params)
+    /**
+     * 
+     */
+    public static function checkStrings()
+    {
+        $string = func_get_args();
+        foreach ($string as $item)
+        {
+            if (!is_numeric($item)) {
+                if (strlen($item) < 3)
+                    return false;
+            }
+            $int = intval($item);
+            if((strlen($int)<1 )  || (strlen($int) > 4))return false; 
+        }
+        return true;
+        
+    }
+
+        public static function filterData($params)
     {
         if(is_array($params))
         {
             for($i = 0;$i < count($params);$i++){
+                $params[$i] = trim($params[$i]);
                 $params[$i] = htmlspecialchars($params[$i]);
                 $params[$i] = addslashes($params[$i]);
 
@@ -93,11 +112,30 @@ class Validate
         }  
         
         if(is_string($params) || is_integer($params)){
+                $params = trim($params);
                 $params = htmlspecialchars($params);
                 $params = addslashes($params);
                 return $params;
         }
             
+    }
+   // дописати
+    public static function checkBlackList()
+    {  $params = func_get_args();
+        
+        if ($params)
+        {
+            $path = ROOT.'/config/check.php';
+            $blacklist = require_once($path);
+            foreach ($blacklist['blacklist'] as $list){
+
+                for($i = 0;$i< count($params);$i++){
+ 
+                if(preg_match("~$list~", $params[$i]))return false;
+                }
+            }
+                return true;
+        }
     }
 
 }

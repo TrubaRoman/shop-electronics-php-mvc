@@ -14,12 +14,16 @@
 class Mailer
 {
     private $conf;
-    
+    private $headers;
+
+
     public function __construct()
     {
        $confPatch = ROOT.'/config/site_params.php';
        $this->conf = require_once $confPatch;
-       
+        $headers = $this->conf['mailHeaders']."\r\n";
+        $headers  .= 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-Type: text/html; charset=utf-8' . "\r\n";
     }
 
     public function sendEmailinUser($email,$message,$subject = false)
@@ -37,11 +41,10 @@ class Mailer
                 . '<h4>повідомлення від: <span style = "color:green;" >'
                 .$email.'</span></h4>';
         
-        $headers = $this->conf['mailHeaders']."\r\n";
-        $headers  .= 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-Type: text/html; charset=utf-8' . "\r\n";
 
-        return mail($adminEmail, $subject, $message,$headers);
+
+        return mail($adminEmail, $subject, $message,$this->headers);
         
     }
+  
 }

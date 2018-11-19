@@ -41,6 +41,9 @@ class UserController
             if($errors == false){
                 if(User::regiseter($login, $email, $phone, $password) == true){
                     $success[] = 'Ви успішно зареєструвалися!';
+                    $user_id = User::checkUserData($email, $password);
+                    User::auth($user_id);
+                    header("Location:/cabinet/");
                 }
             }
         }
@@ -86,6 +89,7 @@ class UserController
     {
         
         unset($_SESSION['user']);
+        Cart::clearCart();
         header("Location: /");
     }
 }

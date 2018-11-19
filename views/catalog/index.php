@@ -16,11 +16,13 @@
 
         <p>Бренд:</p>
         <div class="btn-group" >
+            <?php if(is_array($categoryList)):?>
             <?php foreach ($categoryList as $categorItem):?>
-          <label class="btn btn-default btn-xs <?=($categorItem['id'] == $categoryId)?'active':'';?>">
+          <label class="btn btn-default btn-xs <?=(isset($categoryId) && $categorItem['id'] == $categoryId)?'active':'';?>">
               <a href="/category/<?=$categorItem['id']?>"><?=$categorItem['name']; ?></a>
           </label>
             <?php endforeach;?>
+            <?php endif;?>
         </div>
     </div>
 

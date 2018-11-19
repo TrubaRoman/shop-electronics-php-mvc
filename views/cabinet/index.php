@@ -20,120 +20,96 @@
               <div class="panel-body">
                 <div class="checkout">
                     <div class="addresses box-select">
-                        <h2> 1. Оформіть адресу</h2>
-                        <hr class="offset-sm">
+                          <?php
+                                        if (isset($errors) && is_array($errors)):
+                                            ?>
+                                            <div class="alert alert-danger">
+                                                <?php foreach ($errors as $error): ?>
+                                                    <ul>
+                                                        <li><small><?php echo $error; ?></small></li>
+                                                    </ul>
 
-                        <address class="box-default sm-padding" data-style="selected">
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <?php
+                                        if (isset($success) && is_array($success)):
+                                            ?>
+                                            <div class="alert alert-success">
+                                                <?php foreach ($success as $success_message): ?>
+                                                    <ul>
+                                                        <li><small><?php echo $success_message; ?></small></li>
+                                                    </ul>
+                                            </div>    
+                                                <?php endforeach; ?>
+                                                <?php endif;?>
+                        <?php if(!empty($address)):?>
+                        <h2> Виберіть адресу</h2>
+
+                        <form action="" method="post" name="addressitem">                        
+                            <?php foreach ($address as $addresItem):?>
+
+                            <hr class="offset-sm" >
+                            <label class="box-default sm-padding">   <input type="radio" name="address" value="<?=$addresItem['id']; ?> " class="hidden" >                            
+                        <address  data-style="" >
+
+
                             <hr class="offset-sm">
 
-                            <h3 class="no-margin"><i class="ion-ios-person"></i> John Doe</h3>
+                            <h3 class="no-margin"><i class="ion-ios-person"></i> <?=$user['name']; ?></h3>
                             <p>
-                                <i class="ion-ios-location"></i> 100520, New York City, 45 Park Avenue, United States
+                                <i class="ion-ios-location"></i> Місто: <?php echo City::getCityOnId($addresItem['city_id']) ;?>
                             </p>
+                            <p>
+                                  Вулиця: <?= $addresItem['street'];?>
+                            </p>
+                                                     <p>
+                                  Будинок: №: <?= $addresItem['bulding'];?>
+                            </p>
+                            </p>
+                                                     <p>
+                                  Квартира №: <?= $addresItem['rooms'];?>
+                            </p>                            
 
                             <div class="check">
                                 <i class="ion-checkmark-round"></i>
                             </div>
                             <hr class="offset-sm">
                         </address>
+                            </label>
 
-                        <address class="box-default sm-padding">
-                            <hr class="offset-sm">
-                            <h3 class="no-margin"><i class="ion-ios-person"></i> John Doe</h3>
-                            <p>
-                                <i class="ion-ios-location"></i> 100520, New York City, 45 Park Avenue, United States
-                            </p>
+                            <?php endforeach; ?>
+       
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"  value="" name="1" checked="">
+                                        Використовувати як платіжну адресу
+                                    </label>
+                                </div>
+                            
 
-                            <div class="check">
-                                <i class="ion-checkmark-round"></i>
-                            </div>
-                            <hr class="offset-sm">
-                        </address>
+                        <?php else: ?>
+                            
+                            <h2>  Заповніть дані своєї адреси</h2>
 
-                        <hr class="offset-sm">
-                        <a href="#addaddress" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <?php endif; ?>
+
+                                                                           <hr class="offset-sm">
+                        <a href="/cabinet/addaddress" type="button" >
                           Додати нову адресу
                         </a>
+
                         <hr class="offset-sm">
-                        <div class="collapse" id="collapseExample">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="row group">
-                                        <div class="col-sm-4"><h2 class="h4">Виберіть місто</h2></div>
-                                        <div class="col-sm-8">
-                                          <!-- <input type="text" class="form-control" name="country" value="" required="" placeholder="" /> -->
 
-                                          <div class="group-select justify" tabindex='1'>
-                                              <input class="form-control select" id="country" name="country" value="United Kingdom" placeholder="" required="" />
-
-                                              <ul class="dropdown">
-                                                <li data-value="Aaland Islands">Aaland Islands</li>
-                                                <li data-value="Afghanistan">Afghanistan</li>
-                                                <li data-value="Albania">Albania</li>
-                                           
-                                                <li data-value="Ukraine">Ukraine</li>
-                                                <li data-value="United Arab Emirates">United Arab Emirates</li>
-                                                <li data-value="United Kingdom">United Kingdom</li>
-                                                <li data-value=">United States">>United States</li>
-                                                <li data-value="United States Minor Outlying Islands">United States Minor Outlying Islands</li>
-                                                <li data-value="Uruguay">Uruguay</li>
-                                                <li data-value="Uzbekistan">Uzbekistan</li>
-                                                <li data-value="Vanuatu">Vanuatu</li>
-                                                <li data-value="Vatican City State (Holy See)">Vatican City State (Holy See)</li>
-                                                <li data-value="Venezuela">Venezuela</li>
-                                                <li data-value="Viet Nam">Viet Nam</li>
-                                                <li data-value="Virgin Islands (British)">Virgin Islands (British)</li>
-                                                <li data-value="Virgin Islands (U.S.)">Virgin Islands (U.S.)</li>
-                                                <li data-value="Wallis and Futuna Islands">Wallis and Futuna Islands</li>
-                                                <li data-value="Western Sahara">Western Sahara</li>
-                                                <li data-value="Yemen">Yemen</li>
-                                                <li data-value="Zambia">Zambia</li>
-                                                <li data-value="Zimbabwe">Zimbabwe</li>
-                                              </ul>
-
-                                              <div class="arrow bold"><i class="ion-chevron-down"></i></div>
-                                          </div>
-                                        </div>
-                                    </div>
-
-                                    <hr class="offset-sm">
-                                    <div class="row">
-                                      <div class="col-sm-4">
-                                        <p>Вулиця</p>
-
-                                        <input type="text" class="form-control input-sm" name="city" value="" required="" placeholder="" />
-                                      </div>
-                                      <div class="col-sm-4">
-                                        <hr class="offset-sm visible-xs">
-                                        <p>Дім</p>
-
-                                        <input type="text" class="form-control input-sm" name="street" value="" required="" placeholder="" />
-                                      </div>
-                                      <div class="col-sm-4">
-                                        <hr class="offset-sm visible-xs">
-                                        <p>Квартира</p>
-
-
-
-                                        <input type="text" class="form-control input-sm" name="zip" value="" required="" placeholder="" />
-                                      </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" value="">
-                            Використовувати як платіжну адресу
-                          </label>
-                        </div>
+                        <?php  if(isset($addressView)) 
+                        require_once (ROOT.'/views/layouts/addaddress.php');?>
 
                         <hr class="offset-sm">
                         <hr>
                     </div>
 
-                    <div class="delivery box-select">
+<!--                    <div class="delivery box-select">
                         <h2> 2. Спосіб доставки </h2>
                         <hr class="offset-sm">
 
@@ -187,8 +163,8 @@
 
                         <hr class="offset-sm">
                         <hr>
-                    </div>
-
+                    </div>-->
+<!--
                     <div class="payment box-select">
                         <h2> 3. Оплата </h2>
                         <hr class="offset-sm">
@@ -221,13 +197,13 @@
 
                         <hr class="offset-sm">
                         <hr>
-                    </div>
+                    </div>-->
 
                     <div class="payment box-select">
-                        <h2> 4. Коментарій </h2>
+                        <h2>  Коментарій </h2>
                         <hr class="offset-sm">
 
-                        <textarea name="remark" class="form-control" placeholder="Please, type remark" rows="5"></textarea>
+                        <textarea name="message"  class="form-control" placeholder="Будь-ласка, залиште нам повідомлення" rows="5" ></textarea>
                         <hr class="offset-sm">
                     </div>
                 </div>
@@ -238,22 +214,28 @@
             <hr class="offset-sm visible-sm">
               <div class="panel panel-default">
                 <div class="panel-body">
-                  <h2 class="no-margin">Summary</h2>
+                  <h2 class="no-margin">Сума</h2>
                   <hr class="offset-md">
 
                   <div class="container-fluid">
+                      
+                      <?php if(is_array($cart)):?>
+                      
+
                       <div class="row">
                           <div class="col-xs-6">
-                              <p>Subtotal (7 items)</p>
-                              <p>Discount</p>
-                              <p>Delivery</p>
+                              <p>загалом </p>
+                              <p>знижка</p>
+                  
                           </div>
                           <div class="col-xs-6">
-                              <p><b>$1499</b></p>
-                              <p><b>$0</b></p>
-                              <p><b>$0</b></p>
+                              <p><b><?php echo $cart['subTotalPrice'];?><smal> грн</smal></b></p>
+                              <p><b style="text-decoration: line-through; color:red;"> <?=($cart['totalDiscount'] != 0)? $cart['totalDiscount']:'0'; ?><small> грн</small></b></p>
+                   
                           </div>
                       </div>
+
+                      <?php endif;?>
                   </div>
 
                   <div class="checkboxes">
@@ -284,16 +266,17 @@
                   <div class="container-fluid">
                       <div class="row">
                           <div class="col-xs-6">
-                              <h3 class="no-margin">Total sum</h3>
+                              <h3 class="no-margin">До оплати</h3>
                           </div>
                           <div class="col-xs-6">
-                              <h3 class="no-margin">$1499</h3>
+                              <h3 class="no-margin"><?php echo $cart['totalPrice'];?><smal> грн</smal></h3>
                           </div>
                       </div>
                   </div>
                   <hr class="offset-md">
 
-                  <button class="btn btn-primary btn-lg justify"><i class="ion-compose"></i>&nbsp;&nbsp; Confirm order</button>
+                  <button class="btn btn-primary btn-lg justify" type="submit"><i class="ion-compose"></i>&nbsp;&nbsp;Купити</button>
+                  </form>
                 </div>
               </div>
           </div>

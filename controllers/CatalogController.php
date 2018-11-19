@@ -10,7 +10,7 @@
 /**
  * controller catalog products
  */
-class CatalogController 
+class CatalogController  extends GlobalController
 {
     /**
      * 
@@ -19,6 +19,7 @@ class CatalogController
      */
     public function actionIndex($page = 1)
     {
+       $cartList = parent::getCart();
        $categoryList = [];
        $categoryList = Category::getCategoryList();
         $catalogList = [];
@@ -38,6 +39,7 @@ class CatalogController
     
     public function actionCategory($categoryId,$page = 1)
     {
+        $cartList = parent::getCart();
         $categoryList = [];
         $categoryList = Category::getCategoryList();
         

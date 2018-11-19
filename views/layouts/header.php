@@ -15,11 +15,23 @@
     <!-- Bootstrap -->
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <link href="/assets/css/custom.css" rel="stylesheet">
-    <link href="/assets/css/carousel.css" rel="stylesheet">
-    <link href="/assets/css/carousel-recommendation.css" rel="stylesheet">
     <link href="/assets/ionicons-2.0.1/css/ionicons.css" rel="stylesheet">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link href='https://fonts.googleapis.com/css?family=Catamaran:400,100,300' rel='stylesheet' type='text/css'>
+<!--assets css-->
+    <?php
+    $assets = new AssetsBondle();
+    $style = $assets->getAssetUri();
+    if (!empty($style)) {
+        //print_r($css);die;
+        foreach ($style['css'] as $css):
+            ?>
+            <link href="<?= $css; ?>" rel="stylesheet">
+        <?php endforeach;
+    };
+    ?>
+       
+
+            
+     <link href='https://fonts.googleapis.com/css?family=Catamaran:400,100,300' rel='stylesheet' type='text/css'>  
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,7 +42,13 @@
   </head>
   <body>
       <p class="h5" style="color:red;"> This site is a test and does not contain true information after a certain period it will be deleted</p>
-      <?php require_once ROOT.'/views/layouts/cart.php';?>
+      
+      <?php 
+      $window = $assets->getAssetUri();
+      
+
+      if(isset($window['model'])) require_once ROOT.'/views/layouts/cart.php';
+      ?>
     <nav class="navbar navbar-default">
         <div class="container">
           <div class="navbar-header">
@@ -89,7 +107,7 @@
                             <li><a href="/cabinet/edit"> <i class="ion-android-options"></i> Редагувати дані  </a></li>
                 <?php endif;?>        
                             <li><a href="/cart/"> <i class="ion-bag"></i>
-                                    <span id="cart-count"> <?php echo 'Кошик '.Cart::countItem();?></span></a>
+                                    <span id="cart-count-icon"> <?php echo 'Кошик '.Cart::countItem();?></span></a>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

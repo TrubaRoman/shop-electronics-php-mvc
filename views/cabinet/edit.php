@@ -49,16 +49,15 @@
 
                 <button type="submit" class="btn btn-primary">Змінити</button>
                 <a href="#forgin-password" data-action="Forgot-Password" class="xs-margin">Забули пароль? ></a>
-                <br><br>
-
-                <p>
-                    Якщо у вас вже є обліковий запис, будь-ласка, увійдіть.
-                </p>
+                
+                
+                     <a href="/cabinet/index/"> < Назад </a>
+               
+                
+                
                 <hr class="offset-xs">
 
-                <p>
-                    У вас нема аккаунту? Створіть вже зараз! <a href="/signup/"> Реєстрація > </a>
-                </p>
+               
 
             </form>
         </div>

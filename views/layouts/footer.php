@@ -233,21 +233,48 @@
     <script src="/assets/js/jquery-latest.min.js"></script>
     
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/core.js"></script>
-    <script src="/assets/js/carousel.js"></script>
-    <script src="/assets/js/carousel-recommendation.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".btn-rounded").click(function(){
-                var id = $(this).attr("data-id");
-                $.post("/cart/addAjax/"+id,{},function(data){
-                    $("#cart-count").html(data);
+    <script src="../assets/js/jquery-latest.min.js"></script>    
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/core.js"></script>  
+    
+    <!--assets js-->
+    <?php
+    $assets = new AssetsBondle();
+    $jss = $assets->getAssetUri();
+    if (!empty($jss)) {
+
+        foreach ($jss['js'] as $js):
+                   ?>
+            <script src="/assets/js/<?= $js; ?>"></script>
+        <?php endforeach;
+    };
+    ?>
+
+            <script>
+                $(document).ready(function(){
+//                    $('.btn-rounded').click(function(){
+//                        var id = $(this).attr("data-id");
+//                       
+//                        $.post("/cart/addAjax/"+id,{},function(data){
+//                            $("#cart-count").html(data);
+//                            $("#cart-count-icon").html(data);
+//                        });
+//                        return false;
+//                    });
+            
+                    $('.btn-rounded, #plus').click(function(){
+                        var id = $(this).attr("data-id");
+                        $.post("/cart/addAjax/"+id,{},function(data){
+                            $("#cart-count").html(data);
+                            $("#cart-count-icon").html(data);
+                        });
+                        return false;
+                    });
                 });
-                return false;
-            });
-        });
-    </script>
+            </script>
+
+ 
+
 
     
   </body>

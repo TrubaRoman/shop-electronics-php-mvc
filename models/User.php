@@ -165,7 +165,7 @@ class User
                 . "email = :email";
 
         $result = $db->prepare($sql);
-        $result->bindParam('email', $email, PDO::PARAM_STR);
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->execute();
 
         if ($result->fetchColumn())

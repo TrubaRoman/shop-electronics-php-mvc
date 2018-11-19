@@ -178,5 +178,37 @@ class Product
 
         return $row['count'];
     }
+    
+    public static function getProductsByIds($idsProducts)
+    {
+        $products = [];
+        $db = Db::getConnection();
+       $place_holders = implode(',', array_fill(0, count($idsProducts), '?'));
+
+
+        $sql = "SELECT * FROM product WHERE status = '1' AND id IN ($place_holders)";
+
+        $result = $db->prepare($sql);
+
+        $result->execute($idsProducts);
+        
+        
+        $i = 0;
+        while ($row = $result->fetch())
+        {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['name'] = $row['name'];
+            $products[$i]['code'] = $row['code'];
+            $products[$i]['brand'] = $row['brand'];
+            $products[$i]['price'] = $row['price'];
+            $products[$i]['discount'] = $row['discount'];
+            $i++;
+        }
+
+
+        return $products;
+        
+        
+    }
 
 }

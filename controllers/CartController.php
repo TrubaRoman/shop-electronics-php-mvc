@@ -11,12 +11,31 @@
  *
  * @author r_truba
  */
-class CartController
+class CartController extends GlobalController
 {
+  
+
+        public function actionIndex()
+    { 
+            $cartList = parent::getCart();
+        
+        require_once ROOT . '/views/cart/index.php';
+        return true;
+    }
+    
+    public function actionClear($id = false)
+    {
+        if($id != false)
+        {
+            return parent::clearItemCart($id);
+        }
+        return parent::cartClear();
+    }
+    
+
     public function actionAdd($id)
     {
         Cart::addProduct($id);
-        
         $referrer = $_SERVER['HTTP_REFERER'];
         header("Location:$referrer");
     }

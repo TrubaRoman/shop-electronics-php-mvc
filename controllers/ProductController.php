@@ -9,7 +9,7 @@
  *
  * @author r_truba
  */
-class ProductController 
+class ProductController  extends GlobalController
 {
     /**
      * action views product item decription
@@ -18,6 +18,7 @@ class ProductController
      */
     public function actionView($id)
     {
+        $cartList = parent::getCart();
         //$categoryList = Category::getCategoryList();
         $prodctItem = Product::getProductById($id);
         $specificationsProduct = Specifications::getSpetificByIdProduct($id);
