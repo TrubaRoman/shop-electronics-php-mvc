@@ -41,7 +41,7 @@
             <br>
 
             <button type="submit" class="btn btn-primary">Вхід</button>
-            <a href="#forgin-password" data-action="Forgot-Password" class="xs-margin">Забули пароль? ></a>
+            <a href="/reset/" data-action="Forgot-Password" class="xs-margin">Забули пароль? ></a>
             <br><br>
 
             <p>

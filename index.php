@@ -2,8 +2,9 @@
 //Загальні настройтки
 
 //patern "singelton"
-
+date_default_timezone_set('Europe/Kiev');
 ini_set('display_errors', 1);//під час продакшину змінити
+
 error_reporting(E_ALL);
 session_start();
 //підключення файлів системи

@@ -1,0 +1,37 @@
+<style>
+   .container{
+background:#FFEFDB;
+border:solid #8B8378;
+width:90%;
+min-height:200px;
+padding:20px;
+} 
+
+h2{
+text-align:center;
+color:red;
+}
+
+.time{
+font-size:18px;
+font-famely:italic;
+color:green;
+}
+h4 {text-align:center;}
+
+.right{float:right;}
+</style>
+
+<div class = "container">
+<h2>Шановний користувач</h2>
+<h4>Ви подали заявку на відновлення пароля  на сайті {http}</h4>
+<p> Інструкція відновлення пароля знаходиться на цьому посиланні:{link}</p>
+<p><b>Дане посилання буде дійсне 10 хвилин, від подачі заявки на відновлення пароля<b></p>
+<br>
+<p class = "right">Повідомлення було відправлино: <span class = "time">{time}</span></p>
+<br>
+<p>Якщо ви жодної заявки не відсилали, проігноруйте це повідомлення</p>
+<br>
+<p><em>Завжди вам раді на сайті {http}</em><p>
+<p>Всього вам найкращого!</p>
+</div>

@@ -85,6 +85,42 @@ class UserController
         
     }
     
+    public function actionReset()
+    {   
+        $name = '';
+        $email = '';
+        $errors = false;
+        $success = false;
+        
+                if(!empty($_POST)){
+            $email  = $_POST['email'];
+            $name  = $_POST['name'];
+             if(!Validate::checkLogin($name))  $errors[] = 'Поле Ім\'я введино невірно!';           
+            if(!Validate::checkEmail($email)) $errors[] = "Поле Email введино некорректно!";
+            if(!User::checkEmailExists($email)) $errors[] = 'Дений email не знайдено!';
+            $id = User::getIdonEmailAndName($name, $email);
+            if($id == false ) $errors[] = 'Даний користувач не зареєестрований';
+            if($errors == false)
+            {
+                User::setHeshRepair($id);
+                $hash = User::getHeshRepair($id);   
+                $link = User::lincGenerate($hash['hash_repair'], $email);
+                
+                    if($link !=false){
+                        $mailer = new EmailPasswordRepair(); 
+                        $res = $mailer->sendPasswordRepair($link, $email,$hash['hash_generate_time']);
+                       if($res)$success[] = 'Інструкція по відновленню пароля відправлена на ваш email'; 
+                    }
+                
+            }
+
+        }
+        
+        require_once ROOT.'/views/user/reset.php';
+        return true;
+        
+    }
+    
     public function actionLogout()
     {
         

@@ -29,12 +29,10 @@ class User
 
         $time = time();
 
-        $hash_repair = md5(random_bytes(32));
-
         $db = Db::getConnection();
 
-        $sql = "INSERT INTO users (name,email,phone,password,hash_repair,reg_date) "
-                . "VALUES ( :name,:email,:phone,:password,:hash_repair,:reg_date)";
+        $sql = "INSERT INTO users (name,email,phone,password,reg_date) "
+                . "VALUES ( :name,:email,:phone,:password,:reg_date)";
 
         $result = $db->prepare($sql);
 
@@ -42,7 +40,7 @@ class User
         $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->bindParam(':phone', $phone, PDO::PARAM_STR);
         $result->bindParam(':password', $password, PDO::PARAM_STR);
-        $result->bindParam(':hash_repair', $hash_repair, PDO::PARAM_STR);
+
         $result->bindParam(':reg_date', $time, PDO::PARAM_STR);
         return $result->execute();
     }
@@ -74,7 +72,7 @@ class User
         list($email, $password) = Validate::filterData([$email, $password]);
         $password = md5($password);
 
-        if ($email || $password) {
+        if ($email && $password) {
             $db = Db::getConnection();
             $sql = "SELECT id FROM users WHERE email = :email AND password = :password ";
 
@@ -192,8 +190,9 @@ class User
    
     public static function getUserbyId($user_id)
     {
-        if ($user_id) {
-            $id = intval($user_id);
+       $id =  Validate::filterData($user_id);
+        if ($id) {
+            $id = intval($id);
             $db = Db::getConnection();
             $sql = "SELECT id,name,email,phone FROM users WHERE id = :id";
 
@@ -204,6 +203,87 @@ class User
             
             return $reslut->fetch();
         }
+    }
+    
+    public static function getIdonEmailAndName($name,$email){
+        
+    list($name,$email) = Validate::filterData([$name,$email]);
+    
+    if($name && $email){
+    //    var_dump($email);die;
+        $db = Db::getConnection();
+        $sql = "SELECT id FROM users WHERE "
+                . " email = :email AND"
+                . " name = :name";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->execute();
+       
+         return $result->fetchColumn();
+
+
+    }
+    
+    } 
+    public static function setHeshRepair($id)
+    {
+   
+        Validate::filterData($id);
+        $id = intval($id);
+        if($id){
+                $time = time();
+                $hash_repair = md5(random_bytes(32).$time);           
+                
+                $db = Db::getConnection();
+                $sql = "UPDATE users SET "
+                        . "hash_repair = :hash_repair, "
+                        . "hash_generate_time = :time "
+                        . "WHERE id = :id";
+                $result = $db->prepare($sql);
+                $result->bindParam(':hash_repair', $hash_repair, PDO::PARAM_STR);
+                $result->bindParam(':time', $time, PDO::PARAM_INT);
+                $result->bindParam(':id', $id, PDO::PARAM_STR);
+                return $result->execute();
+        }
+        
+
+    }
+    
+    public static function getHeshRepair($user_id)
+    {
+        
+               $id =  Validate::filterData($user_id);
+        if ($id) {
+            $id = intval($id);
+            $db = Db::getConnection();
+            $sql = "SELECT hash_repair,hash_generate_time FROM users WHERE id = :id";
+
+            $reslut = $db->prepare($sql);
+            $reslut->bindParam(':id', $id, PDO::PARAM_STR);
+            $reslut->setFetchMode(PDO::FETCH_ASSOC);
+            $reslut->execute();
+
+            return $reslut->fetch();
+        }
+    }
+
+        public static function lincGenerate($hash,$email = '')
+    {
+        $langth = strlen($hash);
+        if ($langth !== 32){
+            return false;
+        }
+        $link = [];
+        if($email !='')$email = $email.'/';
+        
+      $http =  $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'];
+       $link[] = $http;
+       $link[] = '/passrepair/'.$email.$hash;
+
+        return $link;
+       
     }
 
 }
