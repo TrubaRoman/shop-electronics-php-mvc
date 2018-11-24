@@ -19,7 +19,6 @@ class CabinetController extends GlobalController
 
             $user = User::getUserbyId($userId); // получаємо дані юзера
 
-
             $errors = false;
 
             $message = '';
@@ -30,12 +29,15 @@ class CabinetController extends GlobalController
                     $addressId = $_POST['address'];
                     $message = Validate::filterData($_POST['message']);
                     if (!Validate::checkMessage($message))
-                        $errors[] = 'Повідомлення повинно мічтинти не меше 2, не більше 500 символів';
+                        $errors[] = 'Повідомлення повинно містити не меше 2, не більше 500 символів';
                     if ($errors === false) {
                         $result = Oreder::saveOrder($userId, $addressId, $message, $cart['productInCart']);
                         if ($result) {
                             //  Cart::clearCart();
-                            header("Location:/ordersuccess");
+                            $mail = new orderMail();
+                           $res = $mail->sendOrderMail($user, $addressId, $message,$cart['productInCart']);
+                      if($res == true)header("Location:/ordersuccess");
+                         else $errors[]  = 'Невдался відправити повідомлення адміністратору';  
                         }
                     }
                 } else
@@ -93,15 +95,21 @@ class CabinetController extends GlobalController
                 if (Address::checkAddressExists($street, $bulding, $room))
                     $errors[] = 'Така адреса вже існує';
                 if ($errors === false) {
-                    $result = Address::AddUsserAddress($userId, $idsite, $street, $bulding, $room);
+                    $true = Address::AddUsserAddress($userId, $idsite, $street, $bulding, $room);
 
-                    if ($result) {
+                    if ($true) {
                         $success[] = "Ви добавили нову адресу, вашу адресу збережно";
                        $address_id = Address::getlastIdAddressinUser($userId);
 
                         $result = Oreder::saveOrder($userId, $address_id, $message,$cart['productInCart']);
-                        if($result)
-                        header("Location:/ordersuccess");
+                       
+                        if($result){
+                            $mail = new orderMail();
+                            $res = $mail->sendOrderMail($user, $address_id, $message,$cart['productInCart']);
+                            if($res) header("Location:/ordersuccess");   
+                            else $errors[]  = 'Невдался відправити повідомлення адміністратору';                          
+                        }
+
                     }
                 }
             }
@@ -115,7 +123,7 @@ class CabinetController extends GlobalController
         if (!User::isGuest()) {
 
             $userId = User::checkLogget();
-            $user = User::getUserbyId($userId);
+            $user = User::getUserbyIdAll($userId);
             $name = '';
             $phone = '';
             $old_password = '';

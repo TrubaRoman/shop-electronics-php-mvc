@@ -122,4 +122,35 @@ class Address
             return false;
         }
     }
+    
+    public static function getAddtessOnId($id)
+    {
+        
+        if($id){
+            
+            $id = Validate::filterData($id);
+            $id = intval($id);
+            
+            $db = Db::getConnection();
+            $sql = "SELECT * FROM address WHERE id = :id";
+            $result = $db->prepare($sql);
+           $result->bindParam(':id',$id, PDO::PARAM_INT);
+           $result->execute();
+           
+           $address = [];
+           $i = 0;
+           
+           while ($row = $result->fetch())
+           {
+
+               $address[$i]['city_id'] = $row['city_id'];
+               $address[$i]['street'] = $row['street'];
+               $address[$i]['bulding'] = $row['bulding'];
+               $address[$i]['rooms'] = $row['rooms'];
+               $i++;
+           }
+           return $address[0];
+            
+        }
+    }
 }

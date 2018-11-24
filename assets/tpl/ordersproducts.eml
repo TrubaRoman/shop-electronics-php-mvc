@@ -1,0 +1,20 @@
+﻿		<h3>Покупка товару</h3>
+<p>Замовлення від: <b>{name}</b></p>
+<p>Номер телефону: <b style = "color:red;">{phone}</b></p>
+<p>Email: {email}</p>
+<hr>
+		<h4>На адресу:</h4>
+<em>Місто: </em><span style = "color:green;">{city}</span>
+<em>Вулиця: </em><span style = "color:green;">{street}</span>
+<em>№ будинку: </em><span style = "color:green;">{build}</span>
+<em>№ Квартири: </em><span style = "color:green;">{room}</span>
+<hr>
+
+                <h4>Товари</h4>
+        <h5>Формат Json </h5>
+<pre>{order_products}</pre>
+        <h4>Повідомлення</h4>
+{message}
+
+<h6> Дата замовлення: {date}</h6>
+

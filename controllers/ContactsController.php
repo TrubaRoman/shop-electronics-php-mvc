@@ -13,7 +13,7 @@
  */
 class ContactsController
 {
-    
+
     public function actionIndex()
     {
         $email = '';
@@ -22,30 +22,35 @@ class ContactsController
         $subject = false;
         $result = false;
         $success = false;
-        
-        if(!empty($_POST)){
+
+        if (!empty($_POST)) {
 
             $email = $_POST['email'];
             $message = $_POST['message'];
-           
-             if(!Validate::checkEmail($email)) $errors[] = "Поле Email введино некорректно!";
-             if(!Validate::checkMessage($message)) $errors[] = "Занадто коротке повідомлення!";
 
-             if ($errors == false) {
+            if (!Validate::checkEmail($email))
+                $errors[] = "Поле Email введино некорректно!";
+            if (!Validate::checkMessage($message))
+                $errors[] = "Занадто коротке повідомлення!";
 
+            if ($errors == false) {
+                $name = '';
                 if (User::checkEmailExists($email)) {
                     $user = User::getUserByEmail($email);
-                   $subject = $user['name'];
+                    $name = $user['name'];
                 }
-                
-               $mailer = new Mailer();
-              $result =  $mailer->sendEmailinUser($email, $message, $subject);
 
-              $success[] = ($result = true)?'Повідомлення успішно відправлено':false;
-              $result = true;
+                $mailer = new contactsMail();
+                $result = $mailer->sendContacts($email, $message, $name);
+
+                if ($result == true) {
+                    $success[] = 'Повідомлення успішно відправлено';
+                }
+                else{$errors[] = 'Невдалось відправити повідомлення';}
             }
         }
-        require_once(ROOT.'/views/contacts/index.php');
+        require_once(ROOT . '/views/contacts/index.php');
         return true;
     }
+
 }

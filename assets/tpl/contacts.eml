@@ -1,0 +1,15 @@
+﻿<em>Від кого:</em><b> {email}</b>
+</br>
+<em>Кому:</em> {adminemail}
+</br>
+<em>Тема:</em> {subject}
+</br>
+<hr>
+ <h3 style = "color:green;text-align:center;">Повідомлення:</h3> . 
+<div style = "border:solid green;width 100%;min-height:100px;" >
+
+
+ {Text}.
+</br>
+</div>
+час відправки: {date}

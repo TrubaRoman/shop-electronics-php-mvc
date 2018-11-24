@@ -13,38 +13,31 @@
  */
 class Mailer
 {
-    private $conf;
-    private $headers;
+    protected $conf;
+    protected $tpldir;
 
 
     public function __construct()
     {
-       $confPatch = ROOT.'/config/site_params.php';
-       $this->conf = require_once $confPatch;
-        $headers = $this->conf['mailHeaders']."\r\n";
-        $headers  .= 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-Type: text/html; charset=utf-8' . "\r\n";
+       $confPach = ROOT.'/config/site_params.php';
+       $this->conf = require_once $confPach;
+       $this->tpldir = ROOT.$this->conf['tpl'];
+       
     }
 
-    public function sendEmailinUser($email,$message,$subject = false)
+    protected function sendMail($from = null,$to = null,$subject = null,$message = null)
     {
-        if($subject != false)
-        {
-            $subject = 'повідомлення від користувача: '.$subject.'.';
-        }
-        else {
-            $subject = 'Повідомлення від незареєстрованого юзера';           
-        }
-        
-        $adminEmail = $this->conf['adminEmail'];
-        $message = '<h4>'.$message.'</h4></br> '
-                . '<h4>повідомлення від: <span style = "color:green;" >'
-                .$email.'</span></h4>';
-        
+      $from =  ($from)??$this->conf['adminEmail'];
+      $to =  ($to)??$this->conf['adminEmail'];
+      $subject =  ($subject)??'subject'.$this->conf['adminEmail'];
+      $message =  ($message)?? date('Y-m-d h:m:s');
+  
+        $headers = $this->conf['mailHeaders']. $this->conf['headers'];  
+  
+        return mail($to, $subject, $message,$headers);
 
-
-        return mail($adminEmail, $subject, $message,$this->headers);
-        
+                
     }
+   
   
 }

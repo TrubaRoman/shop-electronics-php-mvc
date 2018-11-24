@@ -47,7 +47,7 @@ class User
         return $result->execute();
     }
 
-    public static function getUserbyId($user_id)
+    public static function getUserbyIdAll($user_id)
     {
         if ($user_id) {
             $id = intval($user_id);
@@ -187,6 +187,23 @@ class User
             return $result->fetch();
         }
         return false;
+    }
+    
+   
+    public static function getUserbyId($user_id)
+    {
+        if ($user_id) {
+            $id = intval($user_id);
+            $db = Db::getConnection();
+            $sql = "SELECT id,name,email,phone FROM users WHERE id = :id";
+
+            $reslut = $db->prepare($sql);
+            $reslut->bindParam(':id', $id, PDO::PARAM_STR);
+            $reslut->setFetchMode(PDO::FETCH_ASSOC);
+            $reslut->execute();
+            
+            return $reslut->fetch();
+        }
     }
 
 }
