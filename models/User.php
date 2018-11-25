@@ -111,6 +111,30 @@ class User
         }
         return false;
     }
+    
+    
+    
+        public static function updatePass($email,$password)
+    {
+        list($email, $password) = Validate::filterData([$email, $password]);
+
+        
+        $password_hash = md5($password);
+
+        if ($email) {
+            $db = Db::getConnection();
+
+            $sql = "UPDATE users SET "
+                    . "password = :password "
+                    . "WHERE email = :email ";
+
+            $result = $db->prepare($sql);
+            $result->bindParam(':email', $email, PDO::PARAM_STR);
+            $result->bindParam(':password', $password_hash, PDO::PARAM_STR);
+            return $result->execute();
+        }
+        return false;
+    }
 
     /**
      * 
@@ -269,21 +293,50 @@ class User
         }
     }
 
-        public static function lincGenerate($hash,$email = '')
+        public static function lincGenerate($hash)
     {
         $langth = strlen($hash);
         if ($langth !== 32){
             return false;
         }
-        $link = [];
-        if($email !='')$email = $email.'/';
-        
-      $http =  $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'];
-       $link[] = $http;
-       $link[] = '/passrepair/'.$email.$hash;
-
+       $link = '/passrepair/'.$hash;
         return $link;
-       
+
     }
+    
+    public static function getUserupOnHash($hash)
+    {
+        if(preg_match('~([0-9a-f]{32}$)~', $hash)){
+            
+            $db = Db::getConnection();
+            $sql = "SELECT id,name,email,hash_generate_time FROM users "
+                    . "WHERE hash_repair = :hash";
+            $res = $db->prepare($sql);
+            $res->bindParam(':hash', $hash, PDO::PARAM_STR);
+           $res->setFetchMode(PDO::FETCH_ASSOC);
+            $res->execute();
+
+            return $res->fetch();
+            
+        }
+        
+    }
+
+
+    public static function checkHeshtime($start, $end, $numb_of_minutes = LINK_TIME)
+    {
+        $time = $end - $start;
+
+        $numb_second = $numb_of_minutes * 60;
+
+        if ($time > $numb_second) {
+            return false;
+        }
+        return $numb_second - $time;
+    }
+    
+    
+    
+    
 
 }

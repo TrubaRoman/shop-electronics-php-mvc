@@ -41,7 +41,7 @@
     <![endif]-->
   </head>
   <body>
-      <p class="h5" style="color:green;"> This site is a test and does not contain true information after a certain period it will be deleted</p>
+      <p class="h5" style="color:blueviolet;"> This site is a test and does not contain true information after a certain period it will be deleted</p>
       
       <?php 
       $window = $assets->getAssetUri();

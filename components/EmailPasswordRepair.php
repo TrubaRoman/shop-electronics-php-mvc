@@ -14,11 +14,19 @@
 class EmailPasswordRepair extends Mailer
 
 {
-    public function sendPasswordRepair($linkarray,$email,$time)
+    public $link;
+
+    public function __construct()
     {
-        if(is_array($linkarray)&& is_numeric($time)){
-            $http = $linkarray[0];
-            $link = $http.$linkarray[1];
+        parent::__construct();
+        $this->link = SELFADDRESS;
+    }
+
+    public function sendPasswordRepair($link_hash,$email,$time)
+    {       
+        if(is_string($link_hash)&& is_numeric($time)){
+            $http = $this->link;
+            $link = $http.$link_hash;
             $date = date('Y-m-d H:i:s',$time);
             $from = $this->conf['adminEmail'];
             $to = $email;
@@ -27,12 +35,12 @@ class EmailPasswordRepair extends Mailer
             $tpl = $this->tpldir.'repair.eml';
             $mail = file_get_contents($tpl);
                       
-            $body = strtr($mail, [
-                '{http}'=> $http,
-                '{link}' => $link,
-                '{time}' => $date
+            $body = strtr($mail,[
+                "{http}" => $http,
+                "{LINK_TIME}" => LINK_TIME,
+                "{link}" => $link,
+                "{time}" => $date
             ]);
-
             return $this->sendMail($from, $to, $subject, $body);
                         
         }
