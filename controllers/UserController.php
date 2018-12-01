@@ -92,6 +92,11 @@ class UserController
         return true;
     }
 
+    /**
+     * 
+     * @return boolean
+     * action reset password end link generate end send to user email
+     */
     public function actionReset()
     {
         $name = '';
@@ -130,6 +135,7 @@ class UserController
 
     /**
      * 
+     * action logout exit in cabinet
      */
     
     public function actionLogout()
@@ -140,6 +146,14 @@ class UserController
         header("Location: /");
     }
 
+    
+    /**
+     * 
+     * @param type $linkhash 
+     * @return boolean
+     * 
+     * action switching from the email to the page to update the password
+     */
     public function actionPassrepair($linkhash)
     {
 

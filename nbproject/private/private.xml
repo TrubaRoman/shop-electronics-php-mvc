@@ -5,10 +5,11 @@
         <group>
             <file>file:/C:/ishop/shop/models/User.php</file>
             <file>file:/C:/ishop/shop/controllers/CatalogController.php</file>
-            <file>file:/C:/ishop/shop/views/user/reset.php</file>
-            <file>file:/C:/ishop/shop/views/user/passwordrepair.php</file>
+            <file>file:/C:/ishop/shop/config/sitename.php</file>
+            <file>file:/C:/ishop/shop/views/user/login.php</file>
+            <file>file:/C:/ishop/shop/models/Validate.php</file>
             <file>file:/C:/ishop/shop/controllers/UserController.php</file>
-            <file>file:/C:/ishop/shop/components/EmailPasswordRepair.php</file>
+            <file>file:/C:/ishop/shop/views/layouts/header.php</file>
             <file>file:/C:/ishop/shop/config/routes.php</file>
         </group>
     </open-files>

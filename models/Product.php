@@ -15,18 +15,24 @@ class Product
       * @param type $count
       * @return array
       */
-     public static function getLatesProducts($count = self::SHOW_BY_DEFAULT,$page = 1)
+     public static function getLatesProducts($count = self::SHOW_BY_DEFAULT,$page = 1,$order = 'DESC')
      {
          $count = intval($count);
          $offset = self::getOffset($page);
          $db = Db::getConnection();
     //      var_dump($db);
-         $sql = 'SELECT id,name,price,image,is_new,brand ,discount FROM product '
+         if($order == 'ASC'){
+         $sql = 'SELECT id,name,price,image,is_new,brand ,code,discount FROM product '
+                 . 'WHERE status = "1" '
+                 . 'ORDER BY id ASC '
+                 . 'LIMIT :count'
+                 .' OFFSET :offset';
+         }
+ else {$sql = 'SELECT id,name,price,image,is_new,brand ,code,discount FROM product '
                  . 'WHERE status = "1" '
                  . 'ORDER BY id DESC '
                  . 'LIMIT :count'
-                 .' OFFSET :offset';
-         
+                 .' OFFSET :offset';}
          $result = $db->prepare($sql);
          $result->bindParam(':count', $count, PDO::PARAM_INT);
          $result->bindParam(':offset', $offset, PDO::PARAM_INT);
@@ -43,6 +49,7 @@ class Product
              $productList[$i]['image'] = $row['image'];
              $productList[$i]['is_new'] = $row['is_new'];
              $productList[$i]['brand'] = $row['brand'];
+             $productList[$i]['code'] = $row['code'];
              $productList[$i]['discount'] = $row['discount'];
              $i++;
          }
@@ -208,6 +215,52 @@ class Product
 
         return $products;
         
+        
+    }
+    
+    public static function getProductsAll()
+    {
+                $products = [];
+        $db = Db::getConnection();
+    
+
+
+        $sql = "SELECT * FROM product ";
+
+        $result = $db->prepare($sql);
+
+        $result->execute();
+        
+        
+        $i = 0;
+        while ($row = $result->fetch())
+        {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['name'] = $row['name'];
+            $products[$i]['code'] = $row['code'];
+            $products[$i]['brand'] = $row['brand'];
+            $products[$i]['price'] = $row['price'];
+            $products[$i]['discount'] = $row['discount'];
+            $i++;
+        }
+
+
+        return $products;
+             
+    }
+    
+    public static function deleteProductInId($id)
+    {
+        
+        $id = Validate::filterData($id);
+        $id = intval($id);
+        $db = Db::getConnection();
+        $sql = "DELETE FROM product WHERE id = :id";
+        
+        $res = $db->prepare($sql);
+        
+        $res->bindParam(':id', $id, PDO::PARAM_INT);
+       return $res->execute();
         
     }
 

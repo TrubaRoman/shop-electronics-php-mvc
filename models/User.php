@@ -65,7 +65,8 @@ class User
      * 
      * @param type $email
      * @param type $password
-     * @return boolean
+     * @return boolean 
+     * <p>Провіряє чи є користувач про даному паролю та емайлу (авторизація)</p>
      */
     public static function checkUserData($email, $password)
     {
@@ -322,7 +323,14 @@ class User
         
     }
 
-
+/**
+ * 
+ * @param type $start
+ * @param type $end
+ * @param type $numb_of_minutes
+ * @return boolean
+ * <p>Встановлює час дії ссилки на відновлення пароля </p>
+ */
     public static function checkHeshtime($start, $end, $numb_of_minutes = LINK_TIME)
     {
         $time = $end - $start;
@@ -335,6 +343,7 @@ class User
         return $numb_second - $time;
     }
     
+   
     
     
     
