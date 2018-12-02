@@ -84,9 +84,11 @@ class Validate
      */
     public static function checkStrings()
     {
+        
         $string = func_get_args();
+        
         foreach ($string as $item)
-        {
+        {  
             if (!is_numeric($item)) {
                 if (strlen($item) < 3)
                     return false;

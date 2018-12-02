@@ -49,7 +49,7 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-                            <li><a href="./"> <i class="ion-ios-home"></i> На сайт  </a></li>              
+                            <li><a href="/"> <i class="ion-ios-home"></i> На сайт  </a></li>              
                             <li><a href="/logout/"> <i class="ion-log-out"></i> Вихід  </a></li>
 
                         

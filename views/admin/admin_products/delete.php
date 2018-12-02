@@ -15,6 +15,15 @@
     <div class="container">
          <div class="alert alert-danger"> <p class="warning">Після видалення товар повернути буде неможливо</p></div>
         <div class="row">
+                       <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li> <a href="/backend/products/"> Головна адмін </a></li>
+                    <li> <a href="/backend/products/page-1" > Список товарів </a></li>
+                    <li class="active">  Видалення товару </a></li>
+
+                </ol>
+
+            </div>
             
 
                             <div class="col-lg-12">

@@ -14,10 +14,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="breadcrumb">
+            <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li> <a href="/backend/products/"> Головна адмін </a></li>
-                    <li class="active"> <a href="/backend/products/page-1" > Список товарів </a></li>
+                    <li class="active">  Список товарів </li>
 
                 </ol>
 
@@ -41,6 +41,7 @@
                                   <th>Скидка</th>
                                   <th></th>
                                   <th></th>
+                                  <th></th>
                                   </tr>
                                   <?php foreach ($productsList as $products):?>
                                   
@@ -53,6 +54,7 @@
                                       <td><?=($products['discount'])??''; ?></td>
                                       <td><a href="/backend/products/update/<?=$products['id']; ?>"><i class="ion-ios-refresh-empty"></i></a></td>
                                       <td><a href="/backend/products/delete/<?=$products['id']; ?>"><i class="ion-ios-trash-outline"></i></a></td>
+                                      <td><a href="/backend/specification/<?=$products['id']; ?>"><i class="ion-wrench"></i></a></td>
                                   </tr>
                                   <?php endforeach;?>
                               </table>

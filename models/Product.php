@@ -263,5 +263,38 @@ class Product
        return $res->execute();
         
     }
+    
+    
+    public static function create($products)
+    {
+      
+      if(is_array($products)){
+          $db = Db::getConnection();
+          $sql = "INSERT INTO product "
+                  . "(name,brand,code,price,discount,category_id,status,"
+                  . "is_new,is_recommended,description) "
+                  . "VALUES "
+                  . "(:name,:brand,:code,:price,:discount,:category_id,:status,"
+                  . ":is_new,:is_recommended,:description)";
+          
+          $res = $db->prepare($sql);
+          $res->bindParam(':name',$products['name'], PDO::PARAM_STR);
+          $res->bindParam(':brand',$products['brand'], PDO::PARAM_STR);
+          $res->bindParam(':code',$products['code'], PDO::PARAM_INT);
+          $res->bindParam(':price',$products['price'], PDO::PARAM_INT);
+          $res->bindParam(':discount',$products['discount'], PDO::PARAM_INT);
+          $res->bindParam(':category_id',$products['category_id'], PDO::PARAM_STR);
+          $res->bindParam(':status',$products['status'], PDO::PARAM_STR);
+          $res->bindParam(':is_new',$products['is_new'], PDO::PARAM_STR);
+          $res->bindParam(':is_recommended',$products['is_recommended'], PDO::PARAM_STR);
+          $res->bindParam(':description',$products['description'], PDO::PARAM_STR);
+          
+          if($res->execute()){
+              return $db->lastInsertId();
+             }
+             
+             else return 0;
+        }     
+    }
 
 }
